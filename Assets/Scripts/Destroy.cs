@@ -10,6 +10,9 @@ public class Destroy : MonoBehaviour
     public GameObject springPrefab;
     private GameObject myPlat;
     public GameObject moedaPrefab;
+    public GameObject cloud1Prefab;
+    public GameObject cloud2Prefab;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,10 +33,9 @@ public class Destroy : MonoBehaviour
         {
             if(Random.Range(1,7) == 1)
             {
-
-                Destroy(collision.gameObject);
-                
+                Destroy(collision.gameObject);                
                 Instantiate(springPrefab, new Vector2(Random.Range(-5.5f, 5.5f), player.transform.position.y + (14 + Random.Range(0.2f, 1.0f))) , Quaternion.identity);
+                
             } 
             else 
             {
@@ -44,14 +46,21 @@ public class Destroy : MonoBehaviour
             {
                 Instantiate(moedaPrefab, new Vector2(Random.Range(-5.5f, 5.5f), player.transform.position.y + (7 + Random.Range(0.2f, 1.0f))) , Quaternion.identity);
             }
+
+            if (Random.Range(1,7) == 1)
+            {
+                Instantiate(cloud1Prefab, new Vector3(Random.Range(-13f, 13f), player.transform.position.y + (20 + Random.Range(0.4f, 0.9f)),9f) , Quaternion.identity);
+            }
+
+            if (Random.Range(1,7) == 1)
+            {
+                Instantiate(cloud2Prefab, new Vector3(Random.Range(-13f, 13f), player.transform.position.y + (20 + Random.Range(0.6f, 0.7f)), 9f) , Quaternion.identity);
+            }
         } else if(collision.gameObject.name.StartsWith("Spring"))
         {
             if(Random.Range(1,7) == 1)
             {   
-
-                collision.gameObject.transform.position = new Vector2(Random.Range(-5.5f, 5.5f), player.transform.position.y + (14 + Random.Range(0.2f, 1.0f)));
-
-                
+                collision.gameObject.transform.position = new Vector2(Random.Range(-5.5f, 5.5f), player.transform.position.y + (14 + Random.Range(0.2f, 1.0f)));                
             } else 
             {
                 Destroy(collision.gameObject);
@@ -59,25 +68,6 @@ public class Destroy : MonoBehaviour
             }
         }
 
-        else if(collision.gameObject.name.StartsWith("Moeda"))
-        {
-           
-            Destroy(collision.gameObject);
-            
-        
-        }
     }
-
-        // if (Random.Range(1,6) > 1)
-        // {
-        //     myPlat = (GameObject)Instantiate(platformPrefab, new Vector2(Random.Range(-5.5f, 5.5f), player.transform.position.y + (14 + Random.Range(0.5f, 1f))) , Quaternion.identity);
-        // } 
-        // else
-        // {
-        //     myPlat = (GameObject)Instantiate(springPrefab, new Vector2(Random.Range(-5.5f, 5.5f), player.transform.position.y + (14 + Random.Range(0.5f, 1f))) , Quaternion.identity);
-            
-        // }
-
-        // Destroy(collision.gameObject);
     
 }

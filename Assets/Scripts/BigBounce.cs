@@ -22,7 +22,7 @@ public class BigBounce : MonoBehaviour
         {
 
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 1000f);
-
+            SoundManager.PlaySound("bigJump");
         }
     }
 }
